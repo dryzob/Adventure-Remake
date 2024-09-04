@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://dn62hxak02qbn"]
+
+[ext_resource type="Script" path="res://goblin.gd" id="1_bx2rl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qqfxq"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ep31"]
+albedo_color = Color(0.266667, 0.517647, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3iugw"]
+material = SubResource("StandardMaterial3D_6ep31")
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7egkn"]
+radius = 5.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mfn7n"]
+radius = 10.0
+
+[node name="Goblin" type="CharacterBody3D"]
+script = ExtResource("1_bx2rl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_qqfxq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_3iugw")
+
+[node name="idleTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="DetectionRange" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionRange"]
+shape = SubResource("SphereShape3D_7egkn")
+
+[node name="AggroRange" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AggroRange"]
+shape = SubResource("SphereShape3D_mfn7n")

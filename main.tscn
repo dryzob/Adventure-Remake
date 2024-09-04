@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhdhb8tgab0ih"]
+
+[ext_resource type="PackedScene" uid="uid://dr83omlrv8od2" path="res://room.tscn" id="1_cnnxp"]
+[ext_resource type="Script" path="res://main.gd" id="1_g8vhi"]
+[ext_resource type="PackedScene" uid="uid://b13lo38q7x2w1" path="res://player.tscn" id="2_34457"]
+[ext_resource type="PackedScene" uid="uid://dn62hxak02qbn" path="res://goblin.tscn" id="4_u1j3j"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_yk8rb"]
+
+[node name="main" type="Node"]
+script = ExtResource("1_g8vhi")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.5, -2.18557e-08, 0, -4.37114e-08, 1, -0.5, 0.866025, 3.78552e-08, 0, 0, 0)
+
+[node name="startRoom" parent="." instance=ExtResource("1_cnnxp")]
+
+[node name="room3" parent="." instance=ExtResource("1_cnnxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+
+[node name="room2" parent="." instance=ExtResource("1_cnnxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
+
+[node name="player" parent="." instance=ExtResource("2_34457")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.84451, 0.6, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.4827, 0, -1.53992)
+mesh = SubResource("CylinderMesh_yk8rb")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.456573, 0, 24.8258)
+mesh = SubResource("CylinderMesh_yk8rb")
+
+[node name="Goblin" parent="." instance=ExtResource("4_u1j3j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.212497, 0.35, 0)
